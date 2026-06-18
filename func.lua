@@ -371,7 +371,7 @@ function prep_note()
   print("Prepping note "..tostring(idx).."...")
   renoise.song().selected_sample_index = idx
   renoise.app().window.sample_record_dialog_is_visible = true
-  renoise.song().transport:start_stop_sample_recording()
+  renoise.song().transport:start_sample_recording()
   STATE.recording = true
   call_in(start_note, 50)
 end
@@ -399,7 +399,7 @@ end
 function stop_note()
   print("Stopping note...")
   renoise.app().window.sample_record_dialog_is_visible = true
-  renoise.song().transport:start_stop_sample_recording()
+  renoise.song().transport:stop_sample_recording()
   STATE.recording = false
 
   STATE.rrobini = STATE.rrobini + 1
@@ -419,6 +419,3 @@ function stop_note()
     call_in(finish, OPTIONS.between_time)
   end
 end
-
-
-

@@ -40,7 +40,7 @@ function coroutine_status(s, nowheel)
     end
   end
   
-  WHEELI = (WHEELI + 1) % table.getn(wheel)
+  WHEELI = (WHEELI + 1) % #wheel
 end
 
 function update_instrument_name()
@@ -138,7 +138,7 @@ function normalize_coroutine()
 
   -- determine highest max
   local maxmax = 0
-  for k, m in pairs(maxes) do
+  for _, m in pairs(maxes) do
     maxmax = math.max(m, maxmax)
   end
 
@@ -234,4 +234,3 @@ function trim_coroutine()
   coroutine_status("Done!", true)
   update_status("Done trimming silences!")
 end
-

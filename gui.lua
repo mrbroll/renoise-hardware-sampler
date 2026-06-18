@@ -175,7 +175,7 @@ function show_menu()
         vb:textfield {
           id = "hardware_name_textfield",
           value = OPTIONS.hardware_name,
-          notifier =  function(x) update_instrument_name() end,
+          notifier =  function(_) update_instrument_name() end,
           width = "50%",
           tooltip = "Append the hardware device's name to further identify."
         }
@@ -377,7 +377,7 @@ function show_menu()
   }
 
   -- load the saved midi device. Default to device 1 if a preference doesn't exist
-  select_midi_device(prefs:read('midi_device_index'), 1)
+  select_midi_device(prefs:read('midi_device_index', 1))
 
   WINDOW = renoise.app():show_custom_dialog(
     title, content
